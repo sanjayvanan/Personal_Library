@@ -9,6 +9,9 @@ const bookSchema = new mongoose.Schema({
         type : "Number",
         required:true
     },
+    description :{
+        type : "String",
+    },
     isCompleted:{
         type : "Boolean",
         default: false
