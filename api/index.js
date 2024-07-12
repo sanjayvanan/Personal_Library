@@ -1,7 +1,10 @@
 import express from 'express';
+import cors from 'cors'
 import mongoose from 'mongoose'
 import bookRouter from './routes/books.route.js'
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 

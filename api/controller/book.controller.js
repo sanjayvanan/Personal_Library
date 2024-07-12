@@ -3,8 +3,8 @@ import Books from '../models/books.model.js'
 
 
 export const addBooks = async(req,res)=>{
-    const {bookName, pageNo, description } = req.body;
-    const addBooks = new Books({bookName,pageNo,description});
+    const {bookName, pageNo, description, isCompleted, isBookmarked, isBestSeller, rating } = req.body;
+    const addBooks = new Books({bookName,pageNo,description,isCompleted, isBookmarked, isBestSeller, rating});
     try {
         await addBooks.save();
         res.status(200).json(addBooks);
@@ -37,11 +37,11 @@ export const getBookById = async(req, res)=>{
 
 export const updateBooks = async(req, res)=>{
     const { id } = req.params;
-    const { bookName, pageNo, description } = req.body;
+    const {bookName, pageNo, description, isCompleted, isBookmarked, isBestSeller, rating } = req.body
     try {
         const updatedBook = await Books.findByIdAndUpdate(
             id,
-            { bookName, pageNo, description },
+            { bookName, pageNo, description, isCompleted, isBookmarked, isBestSeller, rating },
             { new: true }
         );
         if (!updatedBook) return res.status(404).json({ message: 'Book not found' });

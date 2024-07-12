@@ -19,6 +19,13 @@ const bookSchema = new mongoose.Schema({
     isBookmarked:{
         type : "Boolean",
         default: false
+    },
+    isBestSeller:{
+        type : "Boolean",
+        default: false
+    },
+    rating:{
+        type : "Number"
     }
 },{timestamps:true});
 

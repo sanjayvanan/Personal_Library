@@ -33,6 +33,9 @@ export default function Navbar() {
           <Link to='/about'>
             <li className=' text-slate-700 hover:underline'> About</li>
           </Link>
+          <Link to='/add-books'>
+            <li className=' text-slate-700 hover:underline'> Add Book</li>
+          </Link>
 
         </ul>
       </div>
