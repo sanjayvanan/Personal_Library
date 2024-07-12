@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 
-const CompletedBooks = () => {
+const Bookmarks = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -23,11 +23,11 @@ const CompletedBooks = () => {
   }, []);
 
   // Function to filter out completed books
-  const filteredBooks = data ? data.filter(book => book.isCompleted) : [];
+  const bookmarks = data ? data.filter(book => book.isBookmarked) : [];
 
   return (
     <div className="grid grid-cols-3 gap-4">
-      {filteredBooks.map(book => (
+      {bookmarks.map(book => (
         <div key={book._id} className="max-w-sm">
           <div className="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-full flex flex-col justify-between">
             <div>
@@ -69,4 +69,4 @@ const CompletedBooks = () => {
   );
 };
 
-export default CompletedBooks;
+export default Bookmarks;

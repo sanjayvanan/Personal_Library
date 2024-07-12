@@ -9,7 +9,7 @@ const About = () => {
             About My Personal Library
           </h2>
           <p className="mt-4 max-w-2xl text-xl text-gray-300 dark:text-gray-400 mx-auto">
-            Welcome to my personal library where I collect and share my favorite books and stories.
+            Welcome to my personal library where I collect and share my favorite books and stories. Explore a diverse range of literature, discover new perspectives, and immerse yourself in the world of reading.
           </p>
         </div>
 
@@ -39,7 +39,7 @@ const About = () => {
                   Our Mission
                 </h3>
                 <p className="mt-2 text-base text-gray-300 dark:text-gray-400">
-                  To promote reading and share knowledge through our curated collection of books.
+                  Our mission is to promote reading and share knowledge through our carefully curated collection of books. We believe in the power of literature to inspire, educate, and foster a love for lifelong learning.
                 </p>
               </div>
             </div>
@@ -68,7 +68,7 @@ const About = () => {
                   Our Values
                 </h3>
                 <p className="mt-2 text-base text-gray-300 dark:text-gray-400">
-                  Integrity, Diversity, and a Passion for Learning are at the heart of everything we do.
+                  Integrity, Diversity, and a Passion for Learning are at the heart of everything we do. We strive to create an inclusive space where everyone can explore literature that enriches their understanding of the world and themselves.
                 </p>
               </div>
             </div>

@@ -23,25 +23,23 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {data && data.map(book => (
-        <div key={book._id} className="max-w-sm">
+        <div key={book._id} className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl">
           <div className="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-full flex flex-col justify-between">
             <div>
               <a href="#">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                <h5 className="mb-2 text-xl sm:text-2xl font-bold tracking-tight text-gray-900">
                   {book.bookName}
                 </h5>
               </a>
-              <p className="mb-3 font-normal text-gray-700 dark:text-gray-900">
+             <hr />
+              <p className="mb-3 text-sm sm:text-base font-normal text-gray-700 dark:text-gray-900">
                 {book.description}
               </p>
             </div>
             <Link
-              to={`http://localhost:3001/api/books/getBookById/${book._id}`}
-              onClick={(e) => {
-                e.preventDefault(); 
-              }}
+             to={`/books/${book._id}`}
               className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               Read more
