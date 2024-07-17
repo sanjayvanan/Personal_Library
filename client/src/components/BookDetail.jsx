@@ -28,7 +28,16 @@ const BookDetail = () => {
       {error && <p className="text-red-500">{error}</p>}
       {book ? (
         <div>
-          <h1 className="text-4xl font-bold mb-4">{book.bookName}</h1>
+          <div className="flex items-center mb-4">
+            <h1 className="text-4xl font-bold">{book.bookName}</h1>
+            {book.isCompleted && (
+              <img
+                src="https://img.icons8.com/?size=100&id=MX59Td3jZ5Q5&format=png&color=000000"
+                alt="Completed"
+                className="ml-4 w-10 h-10"
+              />
+            )}
+          </div>
           <p className="text-lg mb-2">{book.description}</p>
           <p className="text-lg mb-2">This Book Comprises of: <b>{book.pageNo} pages</b></p>
           <p className="text-lg mb-2">Completed: {book.isCompleted ? 'Yes' : 'No'}</p>

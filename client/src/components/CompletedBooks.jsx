@@ -27,6 +27,7 @@ const CompletedBooks = () => {
 
   return (
     <div className="grid grid-cols-3 gap-4">
+      
       {filteredBooks.map(book => (
         <div key={book._id} className="max-w-sm">
           <div className="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-full flex flex-col justify-between">

@@ -61,3 +61,21 @@ export const deleteBooks = async(req, res)=>{
         res.status(500).json({ message: error.message });
     }
 }
+
+// search
+
+export const searchBooks = async (req, res) => {
+  try {
+    const query = req.query.query;
+    console.log(`Search query received: ${query}`);
+    
+    // Use $regex to perform a case-insensitive search on bookName
+    const books = await Book.find({ bookName: { $regex: query, $options: 'i' } });
+    
+    console.log(`Books found: ${books.length}`);
+    res.json(books);
+  } catch (err) {
+    console.error('Error in searchBooks:', err.message);
+    res.status(500).send('Server Error');
+  }
+};

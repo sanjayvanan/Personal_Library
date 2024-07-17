@@ -22,6 +22,31 @@ const Home = () => {
     fetchData();
   }, []);
 
+  const toggleBookmark = async (bookId) => {
+    try {
+      const response = await fetch(`http://localhost:3001/api/books/updateBooks/${bookId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ isBookmarked: !findBookById(bookId).isBookmarked }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to toggle bookmark');
+      }
+      
+      // Update local state or refetch data to reflect changes
+      // Example: refetchData();
+    } catch (error) {
+      console.error('Error toggling bookmark:', error);
+    }
+  };
+
+  const findBookById = (id) => {
+    return data.find(book => book._id === id);
+  };
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {data && data.map(book => (
@@ -33,36 +58,44 @@ const Home = () => {
                   {book.bookName}
                 </h5>
               </a>
-             <hr />
+              <hr />
               <p className="mb-3 text-sm sm:text-base font-normal text-gray-700 dark:text-gray-900">
                 {book.description}
               </p>
             </div>
-            <Link
-             to={`/books/${book._id}`}
-              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Read more
-              <svg
-                className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 10"
+            <div className="flex justify-between items-center mt-4">
+              <Link
+                to={`/books/${book._id}`}
+                className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9"
-                />
-              </svg>
-            </Link>
-            {error && <p className="text-red-500 mt-5">{error}</p>}
+                Read more
+                <svg
+                  className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 10"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M1 5h12m0 0L9 1m4 4L9 9"
+                  />
+                </svg>
+              </Link>
+              <button
+                onClick={() => toggleBookmark(book._id)}
+                className={`text-sm px-3 py-1 rounded-lg ${book.isBookmarked ? 'bg-yellow-400 text-gray-900' : 'bg-gray-300 text-gray-700'}`}
+              >
+                {book.isBookmarked ? 'Bookmarked' : 'Bookmark'}
+              </button>
+            </div>
           </div>
         </div>
       ))}
+      {error && <p className="text-red-500 mt-5">{error}</p>}
     </div>
   );
 };

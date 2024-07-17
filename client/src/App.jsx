@@ -6,6 +6,7 @@ import About from './components/About'
 import AddBooks from './components/AddBooks'
 import BookDetail from './components/BookDetail'
 import Bookmarks from './components/Bookmarks'
+import SearchResults from './components/SearchResults';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     <Route path="/add-books" element={<AddBooks/>}/>
     <Route path="/books/:id" element={<BookDetail/>}></Route>
     <Route path="/bookmarks" element={<Bookmarks/>}></Route>
+    <Route path="/search" element={<SearchResults />} />
 
 
   </Routes>
